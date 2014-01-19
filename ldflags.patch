@@ -1,0 +1,15 @@
+--- scrplus_0.21/Makefile.orig	2014-01-19 17:51:52.766091011 +0100
++++ scrplus_0.21/Makefile	2014-01-19 17:53:00.277135057 +0100
+@@ -11,10 +11,10 @@ INCLUDES := colourspace.h bits.h libscrp
+ all: scrplus gscrplus libscrplus.o
+ 
+ scrplus: scrplus.c $(LIBS) $(INCLUDES)
+-	$(CC) $(CFLAGS) $(SDLFLAGS) -o scrplus scrplus.c -lm $(LIBS) $(SDL)
++	$(CC) $(CFLAGS) $(SDLFLAGS) $(LDFLAGS) -o scrplus scrplus.c $(LIBS) $(SDL) -lm
+ 
+ gscrplus: gscrplus.c $(LIBS) $(INCLUDES) icondata.h
+-	$(CC) $(CFLAGS) $(SDLFLAGS) $(GTKFLAGS) -o gscrplus gscrplus.c -lm $(LIBS) $(SDL) $(GTK)
++	$(CC) $(CFLAGS) $(SDLFLAGS) $(GTKFLAGS) $(LDFLAGS) -o gscrplus gscrplus.c $(LIBS) $(SDL) $(GTK) -lm
+ 
+ bits.o: bits.c bits.h
+ 	$(CC) $(CFLAGS) -o bits.o -c bits.c
